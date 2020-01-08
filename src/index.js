@@ -1,6 +1,5 @@
 import readlineSync from 'readline-sync';
 
-
 const giveRandomNuber = (minimal, maximal) => {
   const min = Math.ceil(minimal);
   const max = Math.floor(maximal);
@@ -88,3 +87,14 @@ export const brainCalcGame = () => {
 };
 
 // make the choice function >>>>>>
+
+const listOfGames = ['brain-even', 'brain-calc'];
+
+export const chooseTheGame = () => {
+  const indexOFGame = readlineSync.keyInSelect(listOfGames, 'Which game would you like to play?');
+  const gameForPlay = listOfGames[indexOFGame];
+  if (gameForPlay === 'brain-even') {
+    return brainEvenGame();
+  }
+  return brainCalcGame();
+};
