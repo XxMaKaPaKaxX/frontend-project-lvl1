@@ -6,6 +6,35 @@ const giveRandomNuber = (minimal, maximal) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+const giveRandomOperatorInString = () => {
+  const randomNumber = giveRandomNuber(1, 3);
+  let operator;
+  if (randomNumber === 1) {
+    operator = '+';
+  }
+  if (randomNumber === 2) {
+    operator = '-';
+  }
+  if (randomNumber === 3) {
+    operator = '*';
+  }
+  return operator;
+};
+
+const calculation = (firstNumber, secondNumber, operator) => {
+  let result;
+  if (operator === '+') {
+    result = firstNumber + secondNumber;
+  }
+  if (operator === '-') {
+    result = firstNumber - secondNumber;
+  }
+  if (operator === '*') {
+    result = firstNumber * secondNumber;
+  }
+  return result;
+};
+
 export const playerGreeting = () => {
   const playerName = readlineSync.question('May I have your name?: ');
   console.log(`Hello, ${playerName}!`);
@@ -40,30 +69,6 @@ export const brainEvenGame = () => {
 
 export const brainCalcGame = () => {
   let countOfCorrectAnswers = 0;
-  const giveRandomOperatorInString = () => {
-    const randomNumber = giveRandomNuber(1, 3);
-    if (randomNumber === 1) {
-      return '+';
-    }
-    if (randomNumber === 2) {
-      return '-';
-    }
-    if (randomNumber === 3) {
-      return '*';
-    }
-  };
-
-  const calculation = (firstNumber, secondNumber, operator) => {
-    if (operator === '+') {
-      return firstNumber + secondNumber;
-    }
-    if (operator === '-') {
-      return firstNumber - secondNumber;
-    }
-    if (operator === '*') {
-      return firstNumber * secondNumber;
-    }
-  };
 
   let firstRandomeNumber;
   let secondRandomNumber;
@@ -114,8 +119,8 @@ export const brainGcdGame = () => {
       console.log(`'${playerAnswered}' is wrong answer ;(. Correct answer was '${resultForThisRoundInString}'.`);
       console.log(`Let's try again, ${playerName}!`);
     }
-    console.log(`Congratulations, ${playerName}!`);
   }
+  console.log(`Congratulations, ${playerName}!`);
 };
 
 // make the choice function >>>>>>
