@@ -11,6 +11,12 @@ export const playerGreeting = () => {
   console.log(`Hello, ${playerName}!`);
 };
 
+const giveNode = (x, y) => {
+  if (y > x) return giveNode(y, x);
+  if (!y) return x;
+  return giveNode(y, x % y);
+};
+
 export const brainEvenGame = () => {
   const isEven = (num) => ((num % 2) === 0 ? 'yes' : 'no');
   let countOfCorrectAnswers = 0;
@@ -86,15 +92,44 @@ export const brainCalcGame = () => {
   console.log(`Congratulations, ${playerName}!`);
 };
 
+export const brainGcdGame = () => {
+  const playerName = readlineSync.question('May I have your name?: ');
+  console.log(`Hello, ${playerName}!`);
+  console.log('Find the greatest common divisor of given numbers.');
+  let firstRandomeNumber;
+  let secondRandomNumber;
+  let countOfCorrectAnswers = 0;
+  let resultForThisRoundInString;
+
+  while (countOfCorrectAnswers < 3) {
+    firstRandomeNumber = giveRandomNuber(1, 100);
+    secondRandomNumber = giveRandomNuber(1, 100);
+    resultForThisRoundInString = String(giveNode(firstRandomeNumber, secondRandomNumber));
+    console.log(`Question: ${firstRandomeNumber} ${secondRandomNumber}`);
+    const playerAnswered = readlineSync.question('Your answer: ');
+    if (resultForThisRoundInString === playerAnswered) {
+      console.log('Correct!');
+      countOfCorrectAnswers += 1;
+    } else {
+      console.log(`'${playerAnswered}' is wrong answer ;(. Correct answer was '${resultForThisRoundInString}'.`);
+      console.log(`Let's try again, ${playerName}!`);
+    }
+    console.log(`Congratulations, ${playerName}!`);
+  }
+};
+
 // make the choice function >>>>>>
 
-const listOfGames = ['brain-even', 'brain-calc'];
+const listOfGames = ['brain-even', 'brain-calc', 'brain-gcd'];
 
 export const chooseTheGame = () => {
   const indexOFGame = readlineSync.keyInSelect(listOfGames, 'Which game would you like to play?');
   const gameForPlay = listOfGames[indexOFGame];
   if (gameForPlay === 'brain-even') {
     return brainEvenGame();
+  }
+  if (gameForPlay === 'brain-gcd') {
+    return brainGcdGame();
   }
   return brainCalcGame();
 };
