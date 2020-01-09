@@ -1,5 +1,7 @@
 import readlineSync from 'readline-sync';
 
+const answersForWin = 3;
+
 const giveRandomNuber = (minimal, maximal) => {
   const min = Math.ceil(minimal);
   const max = Math.floor(maximal);
@@ -53,7 +55,7 @@ export const brainEvenGame = () => {
 
   const playerName = readlineSync.question('May I have your name?: ');
   console.log(`Hello, ${playerName}!`);
-  while (countOfCorrectAnswers < 3) {
+  while (countOfCorrectAnswers < answersForWin) {
     numForGame = giveRandomNuber(1, 100);
     console.log(`Question: ${numForGame}`);
     const playerAnswered = readlineSync.question('Your answer: ');
@@ -79,7 +81,7 @@ export const brainCalcGame = () => {
   console.log(`Hello, ${playerName}!`);
   console.log('What is the result of the expression?');
 
-  while (countOfCorrectAnswers < 3) {
+  while (countOfCorrectAnswers < answersForWin) {
     firstRandomeNumber = giveRandomNuber(1, 100);
     secondRandomNumber = giveRandomNuber(1, 100);
     randomOperatorInString = giveRandomOperatorInString();
@@ -106,7 +108,7 @@ export const brainGcdGame = () => {
   let countOfCorrectAnswers = 0;
   let resultForThisRoundInString;
 
-  while (countOfCorrectAnswers < 3) {
+  while (countOfCorrectAnswers < answersForWin) {
     firstRandomeNumber = giveRandomNuber(1, 100);
     secondRandomNumber = giveRandomNuber(1, 100);
     resultForThisRoundInString = String(giveNode(firstRandomeNumber, secondRandomNumber));
