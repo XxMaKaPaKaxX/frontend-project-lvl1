@@ -48,6 +48,19 @@ const giveNode = (x, y) => {
   return giveNode(y, x % y);
 };
 
+const giveRandomProgression = (commonDiference, progressionLength) => {
+  const progressionArr = [giveRandomNuber(1, 10)];
+  let newElement;
+  while (progressionArr.length < progressionLength) {
+    newElement = progressionArr[progressionArr.length - 1] + commonDiference;
+    progressionArr.push(newElement);
+  }
+  return progressionArr;
+};
+
+const giveRandomIndexOfArr = (arr) => giveRandomNuber(0, arr.length - 1);
+
+
 export const brainEvenGame = () => {
   const isEven = (num) => ((num % 2) === 0 ? 'yes' : 'no');
   let countOfCorrectAnswers = 0;
@@ -85,6 +98,7 @@ export const brainCalcGame = () => {
     firstRandomeNumber = giveRandomNuber(1, 100);
     secondRandomNumber = giveRandomNuber(1, 100);
     randomOperatorInString = giveRandomOperatorInString();
+    // eslint-disable-next-line max-len
     resultForThisRoundInString = String(calculation(firstRandomeNumber, secondRandomNumber, randomOperatorInString));
     console.log(`Question: ${firstRandomeNumber} ${randomOperatorInString} ${secondRandomNumber}`);
     const playerAnswered = readlineSync.question('Your answer: ');
@@ -125,9 +139,39 @@ export const brainGcdGame = () => {
   console.log(`Congratulations, ${playerName}!`);
 };
 
+export const brainProgressionGame = () => {
+  const playerName = readlineSync.question('May I have your name?: ');
+  console.log(`Hello, ${playerName}!`);
+  console.log('What number is missing in the progression?');
+
+  let randomProgression;
+  let randomIndexOfArr;
+  // let resultForThisRoundinString;
+  let countOfCorrectAnswers = 0;
+
+  while (countOfCorrectAnswers < answersForWin) {
+    randomProgression = giveRandomProgression(giveRandomNuber(5, 15), 10);
+    randomIndexOfArr = giveRandomIndexOfArr(randomProgression);
+    const resultForThisRoundInString = String(randomProgression[randomIndexOfArr]);
+    randomProgression[randomIndexOfArr] = '..';
+
+
+    console.log(`Question: ${randomProgression}`);
+    const playerAnswered = readlineSync.question('Your answer: ');
+    if (resultForThisRoundInString === playerAnswered) {
+      console.log('Correct!');
+      countOfCorrectAnswers += 1;
+    } else {
+      console.log(`'${playerAnswered}' is wrong answer ;(. Correct answer was '${resultForThisRoundInString}'.`);
+      console.log(`Let's try again, ${playerName}!`);
+    }
+  }
+  console.log(`Congratulations, ${playerName}!`);
+};
+
 // make the choice function >>>>>>
 
-const listOfGames = ['brain-even', 'brain-calc', 'brain-gcd'];
+const listOfGames = ['brain-even', 'brain-calc', 'brain-gcd', 'brain-progression'];
 
 export const chooseTheGame = () => {
   const indexOFGame = readlineSync.keyInSelect(listOfGames, 'Which game would you like to play?');
@@ -137,6 +181,9 @@ export const chooseTheGame = () => {
   }
   if (gameForPlay === 'brain-gcd') {
     return brainGcdGame();
+  }
+  if (gameForPlay === 'brain-progression') {
+    return brainProgressionGame();
   }
   return brainCalcGame();
 };
