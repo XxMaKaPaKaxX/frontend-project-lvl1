@@ -68,6 +68,7 @@ export const brainEvenGame = () => {
 
   const playerName = readlineSync.question('May I have your name?: ');
   console.log(`Hello, ${playerName}!`);
+  console.log('Answer "yes" if the number is even, otherwise answer "no"');
   while (countOfCorrectAnswers < answersForWin) {
     numForGame = giveRandomNuber(1, 100);
     console.log(`Question: ${numForGame}`);
@@ -169,9 +170,44 @@ export const brainProgressionGame = () => {
   console.log(`Congratulations, ${playerName}!`);
 };
 
+export const brainIsPrimeGame = () => {
+  let countOfCorrectAnswers = 0;
+
+  let randomNumber;
+  let resultForThisRoundInString;
+
+  const playerName = readlineSync.question('May I have your name?: ');
+  console.log(`Hello, ${playerName}!`);
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+
+  const isPrime = (numb) => {
+    for (let i = 2; i < numb; i += 1) {
+      if (numb % i === 0) {
+        return 'no';
+      }
+    }
+    return 'yes';
+  };
+
+  while (countOfCorrectAnswers < answersForWin) {
+    randomNumber = giveRandomNuber(1, 100);
+    resultForThisRoundInString = isPrime(randomNumber);
+    console.log(`Question: ${randomNumber}`);
+    const playerAnswered = readlineSync.question('Your answer: ');
+    if (resultForThisRoundInString === playerAnswered) {
+      console.log('Correct!');
+      countOfCorrectAnswers += 1;
+    } else {
+      console.log(`'${playerAnswered}' is wrong answer ;(. Correct answer was '${resultForThisRoundInString}'.`);
+      console.log(`Let's try again, ${playerName}!`);
+    }
+  }
+  console.log(`Congratulations, ${playerName}!`);
+};
+
 // make the choice function >>>>>>
 
-const listOfGames = ['brain-even', 'brain-calc', 'brain-gcd', 'brain-progression'];
+const listOfGames = ['brain-even', 'brain-calc', 'brain-gcd', 'brain-progression', 'brain-prime'];
 
 export const chooseTheGame = () => {
   const indexOFGame = readlineSync.keyInSelect(listOfGames, 'Which game would you like to play?');
@@ -184,6 +220,9 @@ export const chooseTheGame = () => {
   }
   if (gameForPlay === 'brain-progression') {
     return brainProgressionGame();
+  }
+  if (gameForPlay === 'brain-prime') {
+    return brainIsPrimeGame();
   }
   return brainCalcGame();
 };
