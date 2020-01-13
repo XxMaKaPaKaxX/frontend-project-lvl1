@@ -4,6 +4,23 @@
 
 [![Build Status](https://travis-ci.org/XxMaKaPaKaxX/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/XxMaKaPaKaxX/frontend-project-lvl1)
 
-[![asciicast](https://asciinema.org/a/KZlT6t24k3vd0A5Ekxs5UdNCD.svg)](https://asciinema.org/a/KZlT6t24k3vd0A5Ekxs5UdNCD)
+## Installation process and brain- games start
+[![asciicast](https://asciinema.org/a/iHQEk8DFLyrnCw2h5uFRDhkXx.svg)](https://asciinema.org/a/iHQEk8DFLyrnCw2h5uFRDhkXx)
+
+## brain-even game
+[![asciicast](https://asciinema.org/a/gZ2wyKyOShs40rb1kcuPnDEKc.svg)](https://asciinema.org/a/gZ2wyKyOShs40rb1kcuPnDEKc)
+
+## brain-calc game 
+[![asciicast](https://asciinema.org/a/bUkk3J4KnbBWp2pNjybVazZF7.svg)](https://asciinema.org/a/bUkk3J4KnbBWp2pNjybVazZF7)
+
+## brain-gcd game
+[![asciicast](https://asciinema.org/a/H6Ia0oMFQqGzYqwisQ5H1DpnB.svg)](https://asciinema.org/a/H6Ia0oMFQqGzYqwisQ5H1DpnB)
+
+## brain-progression game
+[![asciicast](https://asciinema.org/a/eowsYeeDdrYaspoTkhMWeeiBY.svg)](https://asciinema.org/a/eowsYeeDdrYaspoTkhMWeeiBY)
+
+## brain-prime game
+[![asciicast](https://asciinema.org/a/iBThPJHkQrVuctUF9E3U5YEYB.svg)](https://asciinema.org/a/iBThPJHkQrVuctUF9E3U5YEYB)
+
 
 
