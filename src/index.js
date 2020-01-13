@@ -2,10 +2,31 @@ import readlineSync from 'readline-sync';
 
 const answersForWin = 3;
 
+// engine
+let question;
+let resultForThisRoundInString;
+let countOfCorrectAnswers = 0;
+let playerName;
+
+const engine = () => {
+  console.log(question);
+  const playerAnswered = readlineSync.question('Your answer: ');
+  if (playerAnswered === resultForThisRoundInString) {
+    console.log('Correct!');
+    countOfCorrectAnswers += 1;
+  } else {
+    console.log(`'${playerAnswered}' is wrong answer ;(. Correct answer was '${resultForThisRoundInString}'.`);
+    console.log(`Let's try again, ${playerName}!`);
+  }
+};
+
+// end of engine
+
+
 const giveRandomNuber = (minimal, maximal) => {
-  const min = Math.ceil(minimal);
-  const max = Math.floor(maximal);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  const minInteger = Math.ceil(minimal);
+  const maxInteger = Math.floor(maximal);
+  return Math.floor(Math.random() * (maxInteger - minInteger + 1)) + minInteger;
 };
 
 const giveRandomOperatorInString = () => {
@@ -37,8 +58,9 @@ const calculation = (firstNumber, secondNumber, operator) => {
   return result;
 };
 
-export const playerGreeting = () => {
-  const playerName = readlineSync.question('May I have your name?: ');
+
+const playerGreeting = () => {
+  playerName = readlineSync.question('May I have your name?: ');
   console.log(`Hello, ${playerName}!`);
 };
 
@@ -63,37 +85,34 @@ const giveRandomIndexOfArr = (arr) => giveRandomNuber(0, arr.length - 1);
 
 const isEven = (num) => ((num % 2) === 0 ? 'yes' : 'no');
 
+// brain-even
+
 export const brainEvenGame = () => {
-  let countOfCorrectAnswers = 0;
   let numForGame;
 
-  const playerName = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${playerName}!`);
+
+  playerGreeting();
+
   console.log('Answer "yes" if the number is even, otherwise answer "no"');
   while (countOfCorrectAnswers < answersForWin) {
     numForGame = giveRandomNuber(1, 100);
-    console.log(`Question: ${numForGame}`);
-    const playerAnswered = readlineSync.question('Your answer: ');
-    if (playerAnswered === isEven(numForGame)) {
-      console.log('Correct!');
-      countOfCorrectAnswers += 1;
-    } else {
-      console.log('No, try again');
-    }
+    resultForThisRoundInString = String(isEven(numForGame));
+    question = `Question: ${numForGame}`;
+
+    engine(question, countOfCorrectAnswers, playerName);
   }
   console.log(`Congratulations, ${playerName}!`);
 };
 
-export const brainCalcGame = () => {
-  let countOfCorrectAnswers = 0;
+// brain-calc
 
+export const brainCalcGame = () => {
   let firstRandomeNumber;
   let secondRandomNumber;
   let randomOperatorInString;
-  let resultForThisRoundInString;
 
-  const playerName = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${playerName}!`);
+  playerGreeting();
+
   console.log('What is the result of the expression?');
 
   while (countOfCorrectAnswers < answersForWin) {
@@ -102,83 +121,60 @@ export const brainCalcGame = () => {
     randomOperatorInString = giveRandomOperatorInString();
     // eslint-disable-next-line max-len
     resultForThisRoundInString = String(calculation(firstRandomeNumber, secondRandomNumber, randomOperatorInString));
-    console.log(`Question: ${firstRandomeNumber} ${randomOperatorInString} ${secondRandomNumber}`);
-    const playerAnswered = readlineSync.question('Your answer: ');
-    if (resultForThisRoundInString === playerAnswered) {
-      console.log('Correct!');
-      countOfCorrectAnswers += 1;
-    } else {
-      console.log(`'${playerAnswered}' is wrong answer ;(. Correct answer was '${resultForThisRoundInString}'.`);
-      console.log(`Let's try again, ${playerName}!`);
-    }
+    question = `Question: ${firstRandomeNumber} ${randomOperatorInString} ${secondRandomNumber}`;
+
+    engine();
   }
   console.log(`Congratulations, ${playerName}!`);
 };
 
+// brain-gcd
+
 export const brainGcdGame = () => {
-  const playerName = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${playerName}!`);
-  console.log('Find the greatest common divisor of given numbers.');
   let firstRandomeNumber;
   let secondRandomNumber;
-  let countOfCorrectAnswers = 0;
-  let resultForThisRoundInString;
+
+  playerGreeting();
+  console.log('Find the greatest common divisor of given numbers.');
 
   while (countOfCorrectAnswers < answersForWin) {
     firstRandomeNumber = giveRandomNuber(1, 100);
     secondRandomNumber = giveRandomNuber(1, 100);
     resultForThisRoundInString = String(giveNOD(firstRandomeNumber, secondRandomNumber));
-    console.log(`Question: ${firstRandomeNumber} ${secondRandomNumber}`);
-    const playerAnswered = readlineSync.question('Your answer: ');
-    if (resultForThisRoundInString === playerAnswered) {
-      console.log('Correct!');
-      countOfCorrectAnswers += 1;
-    } else {
-      console.log(`'${playerAnswered}' is wrong answer ;(. Correct answer was '${resultForThisRoundInString}'.`);
-      console.log(`Let's try again, ${playerName}!`);
-    }
+    question = `Question: ${firstRandomeNumber} ${secondRandomNumber}`;
+
+    engine();
   }
   console.log(`Congratulations, ${playerName}!`);
 };
 
-export const brainProgressionGame = () => {
-  const playerName = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${playerName}!`);
-  console.log('What number is missing in the progression?');
+// brain-progression
 
+export const brainProgressionGame = () => {
   let randomProgression;
   let randomIndexOfArr;
-  // let resultForThisRoundinString;
-  let countOfCorrectAnswers = 0;
+
+  playerGreeting();
+  console.log('What number is missing in the progression?');
 
   while (countOfCorrectAnswers < answersForWin) {
     randomProgression = giveRandomProgression(giveRandomNuber(5, 15), 10);
     randomIndexOfArr = giveRandomIndexOfArr(randomProgression);
-    const resultForThisRoundInString = String(randomProgression[randomIndexOfArr]);
+    resultForThisRoundInString = String(randomProgression[randomIndexOfArr]);
     randomProgression[randomIndexOfArr] = '..';
+    question = `Question: ${randomProgression}`;
 
-
-    console.log(`Question: ${randomProgression}`);
-    const playerAnswered = readlineSync.question('Your answer: ');
-    if (resultForThisRoundInString === playerAnswered) {
-      console.log('Correct!');
-      countOfCorrectAnswers += 1;
-    } else {
-      console.log(`'${playerAnswered}' is wrong answer ;(. Correct answer was '${resultForThisRoundInString}'.`);
-      console.log(`Let's try again, ${playerName}!`);
-    }
+    engine();
   }
   console.log(`Congratulations, ${playerName}!`);
 };
 
+// brain-prime
+
 export const brainIsPrimeGame = () => {
-  let countOfCorrectAnswers = 0;
-
   let randomNumber;
-  let resultForThisRoundInString;
 
-  const playerName = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${playerName}!`);
+  playerGreeting();
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
   const isPrime = (numb) => {
@@ -193,15 +189,9 @@ export const brainIsPrimeGame = () => {
   while (countOfCorrectAnswers < answersForWin) {
     randomNumber = giveRandomNuber(1, 100);
     resultForThisRoundInString = isPrime(randomNumber);
-    console.log(`Question: ${randomNumber}`);
-    const playerAnswered = readlineSync.question('Your answer: ');
-    if (resultForThisRoundInString === playerAnswered) {
-      console.log('Correct!');
-      countOfCorrectAnswers += 1;
-    } else {
-      console.log(`'${playerAnswered}' is wrong answer ;(. Correct answer was '${resultForThisRoundInString}'.`);
-      console.log(`Let's try again, ${playerName}!`);
-    }
+    question = `Question: ${randomNumber}`;
+
+    engine();
   }
   console.log(`Congratulations, ${playerName}!`);
 };
@@ -212,6 +202,7 @@ export const chooseTheGame = () => {
   const listOfGames = ['brain-even', 'brain-calc', 'brain-gcd', 'brain-progression', 'brain-prime'];
   const indexOFGame = readlineSync.keyInSelect(listOfGames, 'Which game would you like to play?');
   const gameForPlay = listOfGames[indexOFGame];
+
   if (gameForPlay === 'brain-even') {
     return brainEvenGame();
   }
