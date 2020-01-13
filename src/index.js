@@ -10,9 +10,9 @@ let countOfCorrectAnswers = 0;
 let playerName;
 
 
-const giveRandomNuber = (minimal, maximal) => {
-  const minInteger = Math.ceil(minimal);
-  const maxInteger = Math.floor(maximal);
+const giveRandomNuber = (minimalRandomNumber, maximalRandomNumber) => {
+  const minInteger = Math.ceil(minimalRandomNumber);
+  const maxInteger = Math.floor(maximalRandomNumber);
   return Math.floor(Math.random() * (maxInteger - minInteger + 1)) + minInteger;
 };
 
@@ -72,15 +72,24 @@ const giveRandomIndexOfArr = (arr) => giveRandomNuber(0, arr.length - 1);
 
 const isEven = (num) => ((num % 2) === 0 ? 'yes' : 'no');
 
+const isPrime = (numb) => {
+  for (let i = 2; i < numb; i += 1) {
+    if (numb % i === 0) {
+      return 'no';
+    }
+  }
+  return 'yes';
+};
+
 // brain-even
 
 export const brainEvenGame = () => {
   let numForGame;
 
-
   playerGreeting();
 
   console.log('Answer "yes" if the number is even, otherwise answer "no"');
+
   while (countOfCorrectAnswers < answersForWin) {
     numForGame = giveRandomNuber(1, 100);
     resultForThisRoundInString = String(isEven(numForGame));
@@ -126,6 +135,7 @@ export const brainGcdGame = () => {
   let secondRandomNumber;
 
   playerGreeting();
+
   console.log('Find the greatest common divisor of given numbers.');
 
   while (countOfCorrectAnswers < answersForWin) {
@@ -148,6 +158,7 @@ export const brainProgressionGame = () => {
   let randomIndexOfArr;
 
   playerGreeting();
+
   console.log('What number is missing in the progression?');
 
   while (countOfCorrectAnswers < answersForWin) {
@@ -170,16 +181,8 @@ export const brainIsPrimeGame = () => {
   let randomNumber;
 
   playerGreeting();
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
-  const isPrime = (numb) => {
-    for (let i = 2; i < numb; i += 1) {
-      if (numb % i === 0) {
-        return 'no';
-      }
-    }
-    return 'yes';
-  };
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
   while (countOfCorrectAnswers < answersForWin) {
     randomNumber = giveRandomNuber(1, 100);
@@ -193,7 +196,7 @@ export const brainIsPrimeGame = () => {
   console.log(`Congratulations, ${playerName}!`);
 };
 
-// make the choice function >>>>>>
+// make the choice of game function >>>>>>
 
 export const chooseTheGame = () => {
   const listOfGames = ['brain-even', 'brain-calc', 'brain-gcd', 'brain-progression', 'brain-prime'];
