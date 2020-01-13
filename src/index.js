@@ -1,26 +1,13 @@
 import readlineSync from 'readline-sync';
+import engine from './bin/engine';
 
 const answersForWin = 3;
 
-// engine
+
 let question;
 let resultForThisRoundInString;
 let countOfCorrectAnswers = 0;
 let playerName;
-
-const engine = () => {
-  console.log(question);
-  const playerAnswered = readlineSync.question('Your answer: ');
-  if (playerAnswered === resultForThisRoundInString) {
-    console.log('Correct!');
-    countOfCorrectAnswers += 1;
-  } else {
-    console.log(`'${playerAnswered}' is wrong answer ;(. Correct answer was '${resultForThisRoundInString}'.`);
-    console.log(`Let's try again, ${playerName}!`);
-  }
-};
-
-// end of engine
 
 
 const giveRandomNuber = (minimal, maximal) => {
@@ -99,7 +86,9 @@ export const brainEvenGame = () => {
     resultForThisRoundInString = String(isEven(numForGame));
     question = `Question: ${numForGame}`;
 
-    engine(question, countOfCorrectAnswers, playerName);
+    if (engine(question, resultForThisRoundInString, playerName) === true) {
+      countOfCorrectAnswers += 1;
+    }
   }
   console.log(`Congratulations, ${playerName}!`);
 };
@@ -123,7 +112,9 @@ export const brainCalcGame = () => {
     resultForThisRoundInString = String(calculation(firstRandomeNumber, secondRandomNumber, randomOperatorInString));
     question = `Question: ${firstRandomeNumber} ${randomOperatorInString} ${secondRandomNumber}`;
 
-    engine();
+    if (engine(question, resultForThisRoundInString, playerName) === true) {
+      countOfCorrectAnswers += 1;
+    }
   }
   console.log(`Congratulations, ${playerName}!`);
 };
@@ -143,7 +134,9 @@ export const brainGcdGame = () => {
     resultForThisRoundInString = String(giveNOD(firstRandomeNumber, secondRandomNumber));
     question = `Question: ${firstRandomeNumber} ${secondRandomNumber}`;
 
-    engine();
+    if (engine(question, resultForThisRoundInString, playerName) === true) {
+      countOfCorrectAnswers += 1;
+    }
   }
   console.log(`Congratulations, ${playerName}!`);
 };
@@ -164,7 +157,9 @@ export const brainProgressionGame = () => {
     randomProgression[randomIndexOfArr] = '..';
     question = `Question: ${randomProgression}`;
 
-    engine();
+    if (engine(question, resultForThisRoundInString, playerName) === true) {
+      countOfCorrectAnswers += 1;
+    }
   }
   console.log(`Congratulations, ${playerName}!`);
 };
@@ -191,7 +186,9 @@ export const brainIsPrimeGame = () => {
     resultForThisRoundInString = isPrime(randomNumber);
     question = `Question: ${randomNumber}`;
 
-    engine();
+    if (engine(question, resultForThisRoundInString, playerName) === true) {
+      countOfCorrectAnswers += 1;
+    }
   }
   console.log(`Congratulations, ${playerName}!`);
 };
