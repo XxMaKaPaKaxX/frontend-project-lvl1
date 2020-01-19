@@ -1,22 +1,21 @@
 import readlineSync from 'readline-sync';
-import engine from './bin/engine';
+import brainEvenGame from './games/brain-even';
+import brainCalcGame from './games/brain-calc';
+import brainGcdGame from './games/brain-gcd';
+import brainIsPrimeGame from './games/brain-prime';
+import brainProgressionGame from './games/brain-progresiion';
 
 const answersForWin = 3;
-
-
-let question;
-let resultForThisRoundInString;
-let countOfCorrectAnswers = 0;
 let playerName;
 
 
-const giveRandomNuber = (minimalRandomNumber, maximalRandomNumber) => {
+export const giveRandomNuber = (minimalRandomNumber, maximalRandomNumber) => {
   const minInteger = Math.ceil(minimalRandomNumber);
   const maxInteger = Math.floor(maximalRandomNumber);
   return Math.floor(Math.random() * (maxInteger - minInteger + 1)) + minInteger;
 };
 
-const giveRandomOperatorInString = () => {
+export const giveRandomOperatorInString = () => {
   const randomNumber = giveRandomNuber(1, 3);
   let operator;
   if (randomNumber === 1) {
@@ -31,7 +30,7 @@ const giveRandomOperatorInString = () => {
   return operator;
 };
 
-const calculation = (firstNumber, secondNumber, operator) => {
+export const calculation = (firstNumber, secondNumber, operator) => {
   let result;
   if (operator === '+') {
     result = firstNumber + secondNumber;
@@ -46,18 +45,18 @@ const calculation = (firstNumber, secondNumber, operator) => {
 };
 
 
-const playerGreeting = () => {
+export const playerGreeting = () => {
   playerName = readlineSync.question('May I have your name?: ');
   console.log(`Hello, ${playerName}!`);
 };
 
-const giveNOD = (x, y) => {
+export const giveNOD = (x, y) => {
   if (y > x) return giveNOD(y, x);
   if (!y) return x;
   return giveNOD(y, x % y);
 };
 
-const giveRandomProgression = (commonDiference, progressionLength) => {
+export const giveRandomProgression = (commonDiference, progressionLength) => {
   const progressionArr = [giveRandomNuber(1, 10)];
   let newElement;
   while (progressionArr.length < progressionLength) {
@@ -67,12 +66,12 @@ const giveRandomProgression = (commonDiference, progressionLength) => {
   return progressionArr;
 };
 
-const giveRandomIndexOfArr = (arr) => giveRandomNuber(0, arr.length - 1);
+export const giveRandomIndexOfArr = (arr) => giveRandomNuber(0, arr.length - 1);
 
 
-const isEven = (num) => ((num % 2) === 0 ? 'yes' : 'no');
+export const isEven = (num) => ((num % 2) === 0 ? 'yes' : 'no');
 
-const isPrime = (numb) => {
+export const isPrime = (numb) => {
   for (let i = 2; i < numb; i += 1) {
     if (numb % i === 0) {
       return 'no';
@@ -81,130 +80,18 @@ const isPrime = (numb) => {
   return 'yes';
 };
 
-// brain-even
-
-export const brainEvenGame = () => {
-  let numForGame;
-
-  playerGreeting();
-
-  console.log('Answer "yes" if the number is even, otherwise answer "no"');
-
-  while (countOfCorrectAnswers < answersForWin) {
-    numForGame = giveRandomNuber(1, 100);
-    resultForThisRoundInString = String(isEven(numForGame));
-    question = `Question: ${numForGame}`;
-
-    if (engine(question, resultForThisRoundInString, playerName) === true) {
-      countOfCorrectAnswers += 1;
-    }
-  }
-  console.log(`Congratulations, ${playerName}!`);
-};
-
-// brain-calc
-
-export const brainCalcGame = () => {
-  let firstRandomeNumber;
-  let secondRandomNumber;
-  let randomOperatorInString;
-
-  playerGreeting();
-
-  console.log('What is the result of the expression?');
-
-  while (countOfCorrectAnswers < answersForWin) {
-    firstRandomeNumber = giveRandomNuber(1, 100);
-    secondRandomNumber = giveRandomNuber(1, 100);
-    randomOperatorInString = giveRandomOperatorInString();
-    // eslint-disable-next-line max-len
-    resultForThisRoundInString = String(calculation(firstRandomeNumber, secondRandomNumber, randomOperatorInString));
-    question = `Question: ${firstRandomeNumber} ${randomOperatorInString} ${secondRandomNumber}`;
-
-    if (engine(question, resultForThisRoundInString, playerName) === true) {
-      countOfCorrectAnswers += 1;
-    }
-  }
-  console.log(`Congratulations, ${playerName}!`);
-};
-
-// brain-gcd
-
-export const brainGcdGame = () => {
-  let firstRandomeNumber;
-  let secondRandomNumber;
-
-  playerGreeting();
-
-  console.log('Find the greatest common divisor of given numbers.');
-
-  while (countOfCorrectAnswers < answersForWin) {
-    firstRandomeNumber = giveRandomNuber(1, 100);
-    secondRandomNumber = giveRandomNuber(1, 100);
-    resultForThisRoundInString = String(giveNOD(firstRandomeNumber, secondRandomNumber));
-    question = `Question: ${firstRandomeNumber} ${secondRandomNumber}`;
-
-    if (engine(question, resultForThisRoundInString, playerName) === true) {
-      countOfCorrectAnswers += 1;
-    }
-  }
-  console.log(`Congratulations, ${playerName}!`);
-};
-
-// brain-progression
-
-export const brainProgressionGame = () => {
-  let randomProgression;
-  let randomIndexOfArr;
-
-  playerGreeting();
-
-  console.log('What number is missing in the progression?');
-
-  while (countOfCorrectAnswers < answersForWin) {
-    randomProgression = giveRandomProgression(giveRandomNuber(5, 15), 10);
-    randomIndexOfArr = giveRandomIndexOfArr(randomProgression);
-    resultForThisRoundInString = String(randomProgression[randomIndexOfArr]);
-    randomProgression[randomIndexOfArr] = '..';
-    question = `Question: ${randomProgression}`;
-
-    if (engine(question, resultForThisRoundInString, playerName) === true) {
-      countOfCorrectAnswers += 1;
-    }
-  }
-  console.log(`Congratulations, ${playerName}!`);
-};
-
-// brain-prime
-
-export const brainIsPrimeGame = () => {
-  let randomNumber;
-
-  playerGreeting();
-
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-
-  while (countOfCorrectAnswers < answersForWin) {
-    randomNumber = giveRandomNuber(1, 100);
-    resultForThisRoundInString = isPrime(randomNumber);
-    question = `Question: ${randomNumber}`;
-
-    if (engine(question, resultForThisRoundInString, playerName) === true) {
-      countOfCorrectAnswers += 1;
-    }
-  }
-  console.log(`Congratulations, ${playerName}!`);
-};
 
 // make the choice of game function >>>>>>
 
 export const chooseTheGame = () => {
+  console.log('Welcome to the Brain Games!');
+
   const listOfGames = ['brain-even', 'brain-calc', 'brain-gcd', 'brain-progression', 'brain-prime'];
   const indexOFGame = readlineSync.keyInSelect(listOfGames, 'Which game would you like to play?');
   const gameForPlay = listOfGames[indexOFGame];
 
   if (gameForPlay === 'brain-even') {
-    return brainEvenGame();
+    return brainEvenGame(playerName, answersForWin);
   }
   if (gameForPlay === 'brain-gcd') {
     return brainGcdGame();

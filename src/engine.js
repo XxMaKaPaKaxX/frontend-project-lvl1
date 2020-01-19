@@ -1,4 +1,5 @@
 import readlineSync from 'readline-sync';
+
 // engine
 
 const engine = (question, resultForThisRoundInString, playerName) => {
