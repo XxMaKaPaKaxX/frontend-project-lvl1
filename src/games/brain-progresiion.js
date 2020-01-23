@@ -1,3 +1,4 @@
+import readlineSync from 'readline-sync';
 
 import {
   giveRandomNuber, playerGreeting, giveRandomProgression, giveRandomIndexOfArr,
@@ -6,17 +7,17 @@ import engine from '../engine';
 
 const answersForWin = 3;
 
-
-let question;
-let resultForThisRoundInString;
-let countOfCorrectAnswers = 0;
-let playerName;
-
 const brainProgressionGame = () => {
   let randomProgression;
   let randomIndexOfArr;
+  let question;
+  let resultForThisRoundInString;
+  let countOfCorrectAnswers = 0;
 
-  playerGreeting();
+  console.log('Welcome to the Brain Games!');
+
+  const playerName = readlineSync.question('May I have your name?: ');
+  console.log(`Hello, ${playerName}!`);
 
   console.log('What number is missing in the progression?');
 

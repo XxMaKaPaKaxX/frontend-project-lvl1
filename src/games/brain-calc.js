@@ -1,3 +1,5 @@
+import readlineSync from 'readline-sync';
+
 import {
   giveRandomNuber, calculation, playerGreeting, giveRandomOperatorInString,
 } from '../index';
@@ -6,18 +8,18 @@ import engine from '../engine';
 const answersForWin = 3;
 
 
-let question;
-let resultForThisRoundInString;
-let countOfCorrectAnswers = 0;
-let playerName;
-
-
 const brainCalcGame = () => {
   let firstRandomeNumber;
   let secondRandomNumber;
   let randomOperatorInString;
+  let question;
+  let resultForThisRoundInString;
+  let countOfCorrectAnswers = 0;
 
-  playerGreeting();
+  console.log('Welcome to the Brain Games!');
+
+  const playerName = readlineSync.question('May I have your name?: ');
+  console.log(`Hello, ${playerName}!`);
 
   console.log('What is the result of the expression?');
 

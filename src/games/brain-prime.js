@@ -1,3 +1,5 @@
+import readlineSync from 'readline-sync';
+
 import {
   giveRandomNuber, playerGreeting, isPrime,
 } from '../index';
@@ -5,17 +7,16 @@ import engine from '../engine';
 
 const answersForWin = 3;
 
-
-let question;
-let resultForThisRoundInString;
-let countOfCorrectAnswers = 0;
-let playerName;
-
-
 const brainIsPrimeGame = () => {
   let randomNumber;
+  let question;
+  let resultForThisRoundInString;
+  let countOfCorrectAnswers = 0;
 
-  playerGreeting();
+  console.log('Welcome to the Brain Games!');
+
+  const playerName = readlineSync.question('May I have your name?: ');
+  console.log(`Hello, ${playerName}!`);
 
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 

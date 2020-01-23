@@ -6,8 +6,6 @@ import brainIsPrimeGame from './games/brain-prime';
 import brainProgressionGame from './games/brain-progresiion';
 
 const answersForWin = 3;
-let playerName;
-
 
 export const giveRandomNuber = (minimalRandomNumber, maximalRandomNumber) => {
   const minInteger = Math.ceil(minimalRandomNumber);
@@ -45,10 +43,10 @@ export const calculation = (firstNumber, secondNumber, operator) => {
 };
 
 
-export const playerGreeting = () => {
-  playerName = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${playerName}!`);
-};
+// export const playerGreeting = (playerName) => {
+//  playerName = readlineSync.question('May I have your name?: ');
+// console.log(`Hello, ${playerName}!`);
+// };
 
 export const giveNOD = (x, y) => {
   if (y > x) return giveNOD(y, x);
@@ -91,16 +89,16 @@ export const chooseTheGame = () => {
   const gameForPlay = listOfGames[indexOFGame];
 
   if (gameForPlay === 'brain-even') {
-    return brainEvenGame(playerName, answersForWin);
+    return brainEvenGame(answersForWin);
   }
   if (gameForPlay === 'brain-gcd') {
-    return brainGcdGame();
+    return brainGcdGame(answersForWin);
   }
   if (gameForPlay === 'brain-progression') {
-    return brainProgressionGame();
+    return brainProgressionGame(answersForWin);
   }
   if (gameForPlay === 'brain-prime') {
-    return brainIsPrimeGame();
+    return brainIsPrimeGame(answersForWin);
   }
-  return brainCalcGame();
+  return brainCalcGame(answersForWin);
 };
