@@ -2,5 +2,4 @@
 
 import brainProgressionGame from '../games/brain-progresiion';
 
-console.log('Welcome to the Brain Games!');
 brainProgressionGame();

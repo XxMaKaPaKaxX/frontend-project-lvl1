@@ -1,12 +1,3 @@
-import readlineSync from 'readline-sync';
-import brainEvenGame from './games/brain-even';
-import brainCalcGame from './games/brain-calc';
-import brainGcdGame from './games/brain-gcd';
-import brainIsPrimeGame from './games/brain-prime';
-import brainProgressionGame from './games/brain-progresiion';
-
-const answersForWin = 3;
-
 export const giveRandomNuber = (minimalRandomNumber, maximalRandomNumber) => {
   const minInteger = Math.ceil(minimalRandomNumber);
   const maxInteger = Math.floor(maximalRandomNumber);
@@ -76,29 +67,4 @@ export const isPrime = (numb) => {
     }
   }
   return 'yes';
-};
-
-
-// make the choice of game function >>>>>>
-
-export const chooseTheGame = () => {
-  console.log('Welcome to the Brain Games!');
-
-  const listOfGames = ['brain-even', 'brain-calc', 'brain-gcd', 'brain-progression', 'brain-prime'];
-  const indexOFGame = readlineSync.keyInSelect(listOfGames, 'Which game would you like to play?');
-  const gameForPlay = listOfGames[indexOFGame];
-
-  if (gameForPlay === 'brain-even') {
-    return brainEvenGame(answersForWin);
-  }
-  if (gameForPlay === 'brain-gcd') {
-    return brainGcdGame(answersForWin);
-  }
-  if (gameForPlay === 'brain-progression') {
-    return brainProgressionGame(answersForWin);
-  }
-  if (gameForPlay === 'brain-prime') {
-    return brainIsPrimeGame(answersForWin);
-  }
-  return brainCalcGame(answersForWin);
 };

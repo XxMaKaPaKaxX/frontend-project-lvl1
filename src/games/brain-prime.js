@@ -1,7 +1,6 @@
 import readlineSync from 'readline-sync';
-
 import {
-  giveRandomNuber, playerGreeting, isPrime,
+  giveRandomNuber, isPrime,
 } from '../index';
 import engine from '../engine';
 

@@ -1,14 +1,12 @@
 import readlineSync from 'readline-sync';
-
 import {
-  giveRandomNuber, calculation, playerGreeting, giveRandomOperatorInString,
+  giveRandomNuber, calculation, giveRandomOperatorInString,
 } from '../index';
+
 import engine from '../engine';
 
-const answersForWin = 3;
-
-
 const brainCalcGame = () => {
+  const answersForWin = 3;
   let firstRandomeNumber;
   let secondRandomNumber;
   let randomOperatorInString;

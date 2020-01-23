@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
 import {
-  giveRandomNuber, playerGreeting, giveRandomProgression, giveRandomIndexOfArr,
+  giveRandomNuber, giveRandomProgression, giveRandomIndexOfArr,
 } from '../index';
 import engine from '../engine';
 

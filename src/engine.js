@@ -1,7 +1,5 @@
 import readlineSync from 'readline-sync';
 
-// engine
-
 const engine = (question, resultForThisRoundInString, playerName) => {
   console.log(question);
   const playerAnswered = readlineSync.question('Your answer: ');
@@ -14,5 +12,3 @@ const engine = (question, resultForThisRoundInString, playerName) => {
   return false;
 };
 export default engine;
-
-// end of engine

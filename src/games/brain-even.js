@@ -1,12 +1,9 @@
-
 import readlineSync from 'readline-sync';
 import engine from '../engine';
-import { isEven, giveRandomNuber} from '../index';
+import { isEven, giveRandomNuber } from '../index';
 
-
-
-
-const brainEvenGame = (answersForWin) => {
+const brainEvenGame = () => {
+  const answersForWin = 3;
   let numForGame;
   let question;
   let resultForThisRoundInString;
