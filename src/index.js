@@ -19,18 +19,18 @@ export const giveRandomOperatorInString = () => {
   return operator;
 };
 
-export const calculation = (firstNumber, secondNumber, operator) => {
+export const calculation = ([firstNumber, operator, secondNumber]) => {
   let result;
   if (operator === '+') {
-    result = firstNumber + secondNumber;
+    result = Number(firstNumber) + Number(secondNumber);
   }
   if (operator === '-') {
-    result = firstNumber - secondNumber;
+    result = Number(firstNumber) - Number(secondNumber);
   }
   if (operator === '*') {
-    result = firstNumber * secondNumber;
+    result = Number(firstNumber) * Number(secondNumber);
   }
-  return result;
+  return String(result);
 };
 
 
@@ -39,10 +39,12 @@ export const calculation = (firstNumber, secondNumber, operator) => {
 // console.log(`Hello, ${playerName}!`);
 // };
 
-export const giveNOD = (x, y) => {
-  if (y > x) return giveNOD(y, x);
+export const giveNOD = ([a, b]) => {
+  const x = Number(a);
+  const y = Number(b);
+  if (y > x) return giveNOD([y, x]);
   if (!y) return x;
-  return giveNOD(y, x % y);
+  return giveNOD([y, x % y]);
 };
 
 export const giveRandomProgression = (commonDiference, progressionLength) => {
