@@ -3,13 +3,13 @@ import engine from '../engine';
 
 const brainProgressionGame = () => {
   const getQuestion = () => {
-    const progression = giveRandomProgression(giveRandomNuber(1, 10), 10);
+    const randomNuber = giveRandomNuber(1, 10);
+    const progression = giveRandomProgression(randomNuber, 10);
     const randomIndex = giveRandomIndexOfArr(progression);
     progression[randomIndex] = '..';
     const progressionInString = progression.join(' ');
     return progressionInString;
   };
-
   const getResultForThisRoundInString = (forQuestion) => {
     const arr = forQuestion.split(' ');
     const arrMapedNumb = arr.map((each) => {
@@ -21,23 +21,18 @@ const brainProgressionGame = () => {
 
     let result;
     const indexOfResult = arrMapedNumb.indexOf('..');
-
     let stepOfProgression;
-
     if (indexOfResult < (arrMapedNumb.length / 2)) {
       stepOfProgression = arrMapedNumb[indexOfResult + 2] - arrMapedNumb[indexOfResult + 1];
-      result = String(arrMapedNumb[indexOfResult + 1] - stepOfProgression);
+      result = arrMapedNumb[indexOfResult + 1] - stepOfProgression;
     } else {
       stepOfProgression = arrMapedNumb[indexOfResult - 1] - arrMapedNumb[indexOfResult - 2];
-      result = String(arrMapedNumb[indexOfResult - 1] + stepOfProgression);
+      result = arrMapedNumb[indexOfResult - 1] + stepOfProgression;
     }
-
-    return result;
+    return String(result);
   };
-
   const gameRules = 'What number is missing in the progression?';
 
   engine(getQuestion, getResultForThisRoundInString, gameRules);
 };
-
 export default brainProgressionGame;
