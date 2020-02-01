@@ -4,10 +4,8 @@ import engine from '../engine';
 const progrationLength = 10;
 
 const brainProgressionGame = () => {
-  const getQuestion = () => {
-    const progression = giveProgressionWithGape(progrationLength);
-    return progression;
-  };
+  const getQuestion = () => giveProgressionWithGape(progrationLength);
+
   const getResultForThisRoundInString = (forQuestion) => {
     const arr = forQuestion.split(' ');
     const arrMapedNumb = arr.map((each) => {
