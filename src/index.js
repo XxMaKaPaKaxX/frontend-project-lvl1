@@ -42,25 +42,27 @@ export const giveNOD = ([a, b]) => {
   return giveNOD([y, x % y]);
 };
 
-export const giveRandomProgression = (commonDiference, progressionLength) => {
+export const giveRandomIndexOfArr = (arr) => giveRandomNuber(0, arr.length - 1);
+
+// const giveProgressionWithGap = (arr) => {
+//   const progression = arr;
+//   const randomIndex = giveRandomIndexOfArr(progression);
+//   progression[randomIndex] = '..';
+//   return progression;
+// };
+
+export const giveRandomProgressionWithRandomGape = (commonDiference, progressionLength) => {
   const progressionArr = [giveRandomNuber(1, 10)];
   let newElement;
   while (progressionArr.length < progressionLength) {
     newElement = progressionArr[progressionArr.length - 1] + commonDiference;
     progressionArr.push(newElement);
   }
-  return progressionArr;
+  const randomIndex = giveRandomIndexOfArr(progressionArr);
+  progressionArr[randomIndex] = '..';
+  const progressionInString = progressionArr.join(' ');
+  return progressionInString;
 };
-
-export const giveRandomIndexOfArr = (arr) => giveRandomNuber(0, arr.length - 1);
-
-export const giveProgressionWithGap = (arr) => {
-  const progression = arr;
-  const randomIndex = giveRandomIndexOfArr(progression);
-  progression[randomIndex] = '..';
-  return progression;
-};
-
 
 export const isEven = (num) => ((num % 2) === 0 ? 'yes' : 'no');
 

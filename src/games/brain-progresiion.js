@@ -1,13 +1,12 @@
-import { giveRandomNuber, giveRandomProgression, giveProgressionWithGap } from '../index';
+import { giveRandomNuber, giveRandomProgressionWithRandomGape } from '../index';
 import engine from '../engine';
 
 const brainProgressionGame = () => {
   const getQuestion = () => {
-    const randomNuber = giveRandomNuber(1, 10);
-    const progression = giveRandomProgression(randomNuber, 10);
-    const gapedProgration = giveProgressionWithGap(progression);
-    const progressionInString = gapedProgration.join(' ');
-    return progressionInString;
+    const progrationLength = 10;
+    const progressionStep = giveRandomNuber(1, 10);
+    const progression = giveRandomProgressionWithRandomGape(progressionStep, progrationLength);
+    return progression;
   };
   const getResultForThisRoundInString = (forQuestion) => {
     const arr = forQuestion.split(' ');
