@@ -34,11 +34,6 @@ export const calculation = ([firstNumber, operator, secondNumber]) => {
 };
 
 
-// export const playerGreeting = (playerName) => {
-//  playerName = readlineSync.question('May I have your name?: ');
-// console.log(`Hello, ${playerName}!`);
-// };
-
 export const giveNOD = ([a, b]) => {
   const x = Number(a);
   const y = Number(b);
@@ -58,6 +53,13 @@ export const giveRandomProgression = (commonDiference, progressionLength) => {
 };
 
 export const giveRandomIndexOfArr = (arr) => giveRandomNuber(0, arr.length - 1);
+
+export const giveProgressionWithGap = (arr) => {
+  const progression = arr;
+  const randomIndex = giveRandomIndexOfArr(progression);
+  progression[randomIndex] = '..';
+  return progression;
+};
 
 
 export const isEven = (num) => ((num % 2) === 0 ? 'yes' : 'no');
