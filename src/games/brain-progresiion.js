@@ -1,11 +1,11 @@
-import { giveRandomNuber, giveRandomProgressionWithRandomGape } from '../index';
+import { giveProgressionWithGape } from '../index';
 import engine from '../engine';
+
+const progrationLength = 10;
 
 const brainProgressionGame = () => {
   const getQuestion = () => {
-    const progrationLength = 10;
-    const progressionStep = giveRandomNuber(1, 10);
-    const progression = giveRandomProgressionWithRandomGape(progressionStep, progrationLength);
+    const progression = giveProgressionWithGape(progrationLength);
     return progression;
   };
   const getResultForThisRoundInString = (forQuestion) => {
