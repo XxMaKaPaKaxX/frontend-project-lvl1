@@ -1,26 +1,27 @@
-import { giveRandomNuber, giveNOD } from '../index';
+import giveRandomNuber from '../index';
 
 import engine from '../engine';
 
+const gameRules = 'Find the greatest common divisor of given numbers.';
+
+const giveNOD = (x, y) => {
+  if (y > x) return giveNOD(y, x);
+  if (!y) return x;
+  return giveNOD(y, x % y);
+};
 
 const brainGcdGame = () => {
-  const getQuestion = () => {
+  const gamePreparing = () => {
     const firstRandomeNumber = giveRandomNuber(1, 100);
     const secondRandomNumber = giveRandomNuber(1, 100);
 
     const forQuestion = `${firstRandomeNumber} ${secondRandomNumber}`;
-    return forQuestion;
-  };
-
-  const getResultForThisRoundInString = (forQuestion) => {
-    const arrFromArgumentForCalc = forQuestion.split(' ');
-    const result = String(giveNOD(arrFromArgumentForCalc));
+    const rigthAnswer = String(giveNOD(firstRandomeNumber, secondRandomNumber));
+    const result = [forQuestion, rigthAnswer];
     return result;
   };
 
-  const gameRules = 'Find the greatest common divisor of given numbers.';
-
-  engine(getQuestion, getResultForThisRoundInString, gameRules);
+  engine(gamePreparing, gameRules);
 };
 
 export default brainGcdGame;

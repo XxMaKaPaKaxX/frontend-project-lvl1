@@ -1,11 +1,11 @@
 
 import readlineSync from 'readline-sync';
 
-import brainEvenGame from './brain-even';
-import brainCalcGame from './brain-calc';
-import brainGcdGame from './brain-gcd';
-import brainIsPrimeGame from './brain-prime';
-import brainProgressionGame from './brain-progresiion';
+import brainEvenGame from './games/brain-even';
+import brainCalcGame from './games/brain-calc';
+import brainGcdGame from './games/brain-gcd';
+import brainIsPrimeGame from './games/brain-prime';
+import brainProgressionGame from './games/brain-progresiion';
 
 
 const chooseTheGame = () => {
