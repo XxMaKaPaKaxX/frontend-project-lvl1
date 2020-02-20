@@ -13,20 +13,26 @@ const chooseTheGame = () => {
   const indexOFGame = readlineSync.keyInSelect(listOfGames, 'Which game would you like to play?');
   const gameForPlay = listOfGames[indexOFGame];
 
-  if (gameForPlay === 'brain-even') {
-    brainEvenGame();
-  }
-  if (gameForPlay === 'brain-gcd') {
-    brainGcdGame();
-  }
-  if (gameForPlay === 'brain-progression') {
-    brainProgressionGame();
-  }
-  if (gameForPlay === 'brain-prime') {
-    brainIsPrimeGame();
-  }
-  if (gameForPlay === 'brain-calc') {
-    brainCalcGame();
+
+  switch (gameForPlay) {
+    case 'brain-even':
+      brainEvenGame();
+      break;
+    case 'brain-gcd':
+      brainGcdGame();
+      break;
+    case 'brain-progression':
+      brainProgressionGame();
+      break;
+    case 'brain-prime':
+      brainIsPrimeGame();
+      break;
+    case 'brain-calc':
+      brainCalcGame();
+      break;
+    default:
+      console.log('Good bye!');
+      break;
   }
 };
 

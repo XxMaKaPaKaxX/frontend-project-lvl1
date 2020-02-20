@@ -1,49 +1,45 @@
-import giveRandomNuber from '../index';
+import giveRandomNuber from '../utils';
 
-import engine from '../engine';
+import engine from '../index';
 
 const gameRules = 'What is the result of the expression?';
 
 const giveRandomOperatorInString = () => {
-  const randomNumber = giveRandomNuber(1, 3);
-  let operator;
-  if (randomNumber === 1) {
-    operator = '+';
-  }
-  if (randomNumber === 2) {
-    operator = '-';
-  }
-  if (randomNumber === 3) {
-    operator = '*';
-  }
-  return operator;
+  const operatorsList = ['+', '-', '*'];
+  const randomNumber = giveRandomNuber(1, operatorsList.length);
+  return operatorsList[randomNumber - 1];
 };
 
 const calculation = (firstNumber, operator, secondNumber) => {
   let result;
-  if (operator === '+') {
-    result = Number(firstNumber) + Number(secondNumber);
-  }
-  if (operator === '-') {
-    result = Number(firstNumber) - Number(secondNumber);
-  }
-  if (operator === '*') {
-    result = Number(firstNumber) * Number(secondNumber);
+
+  switch (operator) {
+    case '+':
+      result = Number(firstNumber) + Number(secondNumber);
+      break;
+    case '-':
+      result = Number(firstNumber) - Number(secondNumber);
+      break;
+    case '*':
+      result = Number(firstNumber) * Number(secondNumber);
+      break;
+    default:
+      console.log('Unknow operator');
   }
   return String(result);
 };
 
-const brainCalcGame = () => {
-  const gamePreparing = () => {
-    const randomeNumber1 = giveRandomNuber(1, 100);
-    const randomNumber2 = giveRandomNuber(1, 100);
-    const randomOperatorInString = giveRandomOperatorInString();
-    const forQuestion = `${randomeNumber1} ${randomOperatorInString} ${randomNumber2}`;
-    const rigthAnswere = calculation(randomeNumber1, randomOperatorInString, randomNumber2);
-    const result = [forQuestion, rigthAnswere];
-    return result;
-  };
+const gamePreparing = () => {
+  const randomeNumber1 = giveRandomNuber(1, 100);
+  const randomNumber2 = giveRandomNuber(1, 100);
+  const randomOperatorInString = giveRandomOperatorInString();
+  const forQuestion = `${randomeNumber1} ${randomOperatorInString} ${randomNumber2}`;
+  const rigthAnswere = calculation(randomeNumber1, randomOperatorInString, randomNumber2);
+  const result = [forQuestion, rigthAnswere];
+  return result;
+};
 
+const brainCalcGame = () => {
   engine(gamePreparing, gameRules);
 };
 
