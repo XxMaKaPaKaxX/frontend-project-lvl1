@@ -1,3 +1,4 @@
 node_modules
 dist
 .eslintrc.yml.save
+..gitignore.swp
