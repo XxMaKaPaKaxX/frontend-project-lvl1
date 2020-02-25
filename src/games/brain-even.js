@@ -1,21 +1,19 @@
 import engine from '../index';
-import giveRandomNuber from '../utils';
+import giveRandomNumber from '../utils';
 
-
-const gameRules = 'Answer "yes" if the number is even, otherwise answer "no"';
+const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no"';
 
 const isEven = (num) => ((num % 2) === 0);
 
-
-const gamePreparing = () => {
-  const forQuetion = giveRandomNuber(1, 100);
-  const rigthAnswere = isEven(forQuetion) ? 'yes' : 'no';
-  const result = [forQuetion, rigthAnswere];
+const giveDataForGame = () => {
+  const question = giveRandomNumber(1, 100);
+  const rigthAnswer = isEven(question) ? 'yes' : 'no';
+  const result = [question, rigthAnswer];
   return result;
 };
 
 const brainEvenGame = () => {
-  engine(gamePreparing, gameRules);
+  engine(giveDataForGame, gameDescription);
 };
 
 export default brainEvenGame;

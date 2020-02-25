@@ -1,46 +1,46 @@
-import giveRandomNuber from '../utils';
+import giveRandomNumber from '../utils';
 
 import engine from '../index';
 
-const gameRules = 'What is the result of the expression?';
+const gameDescription = 'What is the result of the expression?';
 
-const giveRandomOperatorInString = () => {
+const giveRandomOperator = () => {
   const operatorsList = ['+', '-', '*'];
-  const randomNumber = giveRandomNuber(1, operatorsList.length);
+  const randomNumber = giveRandomNumber(1, operatorsList.length);
   return operatorsList[randomNumber - 1];
 };
 
-const calculation = (firstNumber, operator, secondNumber) => {
+const calculate = (firstNumber, operator, secondNumber) => {
   let result;
 
   switch (operator) {
     case '+':
-      result = Number(firstNumber) + Number(secondNumber);
+      result = firstNumber + secondNumber;
       break;
     case '-':
-      result = Number(firstNumber) - Number(secondNumber);
+      result = firstNumber - secondNumber;
       break;
     case '*':
-      result = Number(firstNumber) * Number(secondNumber);
+      result = firstNumber * secondNumber;
       break;
     default:
-      console.log('Unknow operator');
+      return null;
   }
-  return String(result);
+  return result;
 };
 
-const gamePreparing = () => {
-  const randomeNumber1 = giveRandomNuber(1, 100);
-  const randomNumber2 = giveRandomNuber(1, 100);
-  const randomOperatorInString = giveRandomOperatorInString();
-  const forQuestion = `${randomeNumber1} ${randomOperatorInString} ${randomNumber2}`;
-  const rigthAnswere = calculation(randomeNumber1, randomOperatorInString, randomNumber2);
-  const result = [forQuestion, rigthAnswere];
+const giveDataForGame = () => {
+  const randomNumber1 = giveRandomNumber(1, 100);
+  const randomNumber2 = giveRandomNumber(1, 100);
+  const randomOperator = giveRandomOperator();
+  const question = `${randomNumber1} ${randomOperator} ${randomNumber2}`;
+  const rigthAnswer = String(calculate(randomNumber1, randomOperator, randomNumber2));
+  const result = [question, rigthAnswer];
   return result;
 };
 
 const brainCalcGame = () => {
-  engine(gamePreparing, gameRules);
+  engine(giveDataForGame, gameDescription);
 };
 
 export default brainCalcGame;

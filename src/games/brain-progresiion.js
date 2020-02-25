@@ -1,30 +1,27 @@
-import giveRandomNuber from '../utils';
+import giveRandomNumber from '../utils';
 import engine from '../index';
 
 const progressionLength = 10;
-const gameRules = 'What number is missing in the progression?';
+const gameDescription = 'What number is missing in the progression?';
 
-const giveRandomIndexOfArr = (arr) => giveRandomNuber(0, arr.length - 1);
+const giveRandomIndexOfArr = (arr) => giveRandomNumber(0, arr.length - 1);
 
-const gamePreparing = () => {
+const giveDataForGame = () => {
   const progression = [];
-  const firstArrayNumber = giveRandomNuber(1, 10);
-  progression.push(firstArrayNumber);
-  const progressionDiff = giveRandomNuber(1, 10);
-  let newElement;
-  for (let indexNewElement = 1; indexNewElement < progressionLength - 1; indexNewElement += 1) {
-    newElement = firstArrayNumber + indexNewElement * progressionDiff;
+  const progressionDiff = giveRandomNumber(1, 10);
+  for (let indexNewElement = 0; indexNewElement < progressionLength - 1; indexNewElement += 1) {
+    const newElement = (indexNewElement + 1) * progressionDiff;
     progression.push(newElement);
   }
   const randomIndex = giveRandomIndexOfArr(progression);
   const rigthAnswer = String(progression[randomIndex]);
   progression[randomIndex] = '..';
-  const forQuestion = progression.join(' ');
-  const result = [forQuestion, rigthAnswer];
+  const question = progression.join(' ');
+  const result = [question, rigthAnswer];
   return result;
 };
 
 const brainProgressionGame = () => {
-  engine(gamePreparing, gameRules);
+  engine(giveDataForGame, gameDescription);
 };
 export default brainProgressionGame;
