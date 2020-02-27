@@ -24,7 +24,7 @@ const engine = (gameData, gameDescription) => {
       console.log('Correct!');
     } else {
       console.log(`${playerAnswer} is wrong answer ;(. Correct answer was ${rigthAnswer}.`);
-      console.log(`Try again ${[playerName]}!`);
+      console.log(`Let's try again, ${[playerName]}!`);
       return;
     }
   }
