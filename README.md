@@ -1,4 +1,17 @@
-# frontend-project-lvl1
+# Brain games
+#### Here is my first project in js - brain games - pack of mini arithmetic games which includes:
+* brain-even game: Answer "yes" if the number is even, otherwise answer "no"
+* brain-calc game: What is the result of the expression?
+* brain-gcd game: Find the greatest common divisor of given numbers.
+* brain-progression game: What number is missing in the progression?
+* brain-prime game: Answer "yes" if given number is prime. Otherwise answer "no".
+
+#### Instaling 
+ download or clone  repository on your computer, then: 
+* you can immediately play by the command in console  ***make start*** 
+		*or*
+* locally install by the command  ***make publish && sudo npm link*** in console
+If you have locally installed the packege you can run brain games by the command ***brain-games***
 
 <a href="https://codeclimate.com/github/XxMaKaPaKaxX/frontend-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/9f375081b6d3de9d55fc/maintainability" /></a>
 
