@@ -1,12 +1,12 @@
 import readlineSync from 'readline-sync';
 
+const gameRoundsLimit = 3;
+
 const askQuestion = (question) => {
   console.log(`Question: ${question}`);
 };
 
 const engine = (gameData, gameDescription) => {
-  const gameRoundsLimit = 3;
-
   console.log('Welcome to the Brain Games!');
 
   const playerName = readlineSync.question('May I have your name?: ');
@@ -23,7 +23,8 @@ const engine = (gameData, gameDescription) => {
     if (playerAnswer === rigthAnswer) {
       console.log('Correct!');
     } else {
-      console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${rigthAnswer}'. Try again ${[playerName]}`);
+      console.log(`${playerAnswer} is wrong answer ;(. Correct answer was ${rigthAnswer}.`);
+      console.log(`Try again ${[playerName]}!`);
       return;
     }
   }

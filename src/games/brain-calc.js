@@ -1,13 +1,13 @@
-import giveRandomNumber from '../utils';
+import generateRandomNumber from '../utils';
 
 import engine from '../index';
 
 const gameDescription = 'What is the result of the expression?';
 
-const giveRandomOperator = () => {
-  const operatorsList = ['+', '-', '*'];
-  const randomNumber = giveRandomNumber(1, operatorsList.length);
-  return operatorsList[randomNumber - 1];
+const getRandomOperator = () => {
+  const operators = ['+', '-', '*'];
+  const randomNumber = generateRandomNumber(1, operators.length);
+  return operators[randomNumber - 1];
 };
 
 const calculate = (firstNumber, operator, secondNumber) => {
@@ -29,18 +29,18 @@ const calculate = (firstNumber, operator, secondNumber) => {
   return result;
 };
 
-const giveDataForGame = () => {
-  const randomNumber1 = giveRandomNumber(1, 100);
-  const randomNumber2 = giveRandomNumber(1, 100);
-  const randomOperator = giveRandomOperator();
+const generateDataForGame = () => {
+  const randomNumber1 = generateRandomNumber(1, 100);
+  const randomNumber2 = generateRandomNumber(1, 100);
+  const randomOperator = getRandomOperator();
   const question = `${randomNumber1} ${randomOperator} ${randomNumber2}`;
   const rigthAnswer = String(calculate(randomNumber1, randomOperator, randomNumber2));
   const result = [question, rigthAnswer];
   return result;
 };
 
-const brainCalcGame = () => {
-  engine(giveDataForGame, gameDescription);
+const startCalcGame = () => {
+  engine(generateDataForGame, gameDescription);
 };
 
-export default brainCalcGame;
+export default startCalcGame;

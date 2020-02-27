@@ -1,11 +1,11 @@
 
 import readlineSync from 'readline-sync';
 
-import brainEvenGame from './games/brain-even';
-import brainCalcGame from './games/brain-calc';
-import brainGcdGame from './games/brain-gcd';
-import brainIsPrimeGame from './games/brain-prime';
-import brainProgressionGame from './games/brain-progresiion';
+import startEvenGame from './games/brain-even';
+import startCalcGame from './games/brain-calc';
+import startGcdGame from './games/brain-gcd';
+import startIsPrimeGame from './games/brain-prime';
+import startProgressionGame from './games/brain-progresiion';
 
 
 const chooseTheGame = () => {
@@ -16,19 +16,19 @@ const chooseTheGame = () => {
 
   switch (gameForPlay) {
     case 'brain-even':
-      brainEvenGame();
+      startEvenGame();
       break;
     case 'brain-gcd':
-      brainGcdGame();
+      startGcdGame();
       break;
     case 'brain-progression':
-      brainProgressionGame();
+      startProgressionGame();
       break;
     case 'brain-prime':
-      brainIsPrimeGame();
+      startIsPrimeGame();
       break;
     case 'brain-calc':
-      brainCalcGame();
+      startCalcGame();
       break;
     default:
       console.log('Good bye!');

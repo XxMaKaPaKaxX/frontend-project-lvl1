@@ -1,4 +1,4 @@
-import giveRandomNumber from '../utils';
+import generateRandomNumber from '../utils';
 import engine from '../index';
 
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
@@ -15,16 +15,16 @@ const isPrime = (numb) => {
   return true;
 };
 
-const giveDataForGame = () => {
-  const randomNumber = giveRandomNumber(1, 100);
+const generateDataForGame = () => {
+  const randomNumber = generateRandomNumber(1, 100);
   const question = `${randomNumber}`;
   const rigthAnswer = isPrime(randomNumber) ? 'yes' : 'no';
   const result = [question, rigthAnswer];
   return result;
 };
 
-const brainIsPrimeGame = () => {
-  engine(giveDataForGame, gameDescription);
+const startIsPrimeGame = () => {
+  engine(generateDataForGame, gameDescription);
 };
 
-export default brainIsPrimeGame;
+export default startIsPrimeGame;
