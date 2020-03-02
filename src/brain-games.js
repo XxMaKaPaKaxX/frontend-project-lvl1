@@ -1,11 +1,11 @@
 
 import readlineSync from 'readline-sync';
 
-import startEvenGame from './games/brain-even';
-import startCalcGame from './games/brain-calc';
-import startGcdGame from './games/brain-gcd';
-import startIsPrimeGame from './games/brain-prime';
-import startProgressionGame from './games/brain-progresiion';
+import startEvenGame from './games/even';
+import startCalcGame from './games/calc';
+import startGcdGame from './games/gcd';
+import startPrimeGame from './games/prime';
+import startProgressionGame from './games/progresiion';
 
 
 const chooseTheGame = () => {
@@ -25,7 +25,7 @@ const chooseTheGame = () => {
       startProgressionGame();
       break;
     case 'brain-prime':
-      startIsPrimeGame();
+      startPrimeGame();
       break;
     case 'brain-calc':
       startCalcGame();

@@ -1,3 +1,7 @@
+<a href="https://codeclimate.com/github/XxMaKaPaKaxX/frontend-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/9f375081b6d3de9d55fc/maintainability" /></a>
+
+[![Build Status](https://travis-ci.org/XxMaKaPaKaxX/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/XxMaKaPaKaxX/frontend-project-lvl1)
+
 # Brain games
 #### Here is my first project in js - brain games - pack of mini arithmetic games which includes:
 * brain-even game: Answer "yes" if the number is even, otherwise answer "no"
@@ -12,10 +16,6 @@
 		*or*
 * locally install by the command  ***make publish && sudo npm link*** in console
 If you have locally installed the packege you can run brain games by the command ***brain-games***
-
-<a href="https://codeclimate.com/github/XxMaKaPaKaxX/frontend-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/9f375081b6d3de9d55fc/maintainability" /></a>
-
-[![Build Status](https://travis-ci.org/XxMaKaPaKaxX/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/XxMaKaPaKaxX/frontend-project-lvl1)
 
 ## Installation process and brain- games start
 [![asciicast](https://asciinema.org/a/iHQEk8DFLyrnCw2h5uFRDhkXx.svg)](https://asciinema.org/a/iHQEk8DFLyrnCw2h5uFRDhkXx)

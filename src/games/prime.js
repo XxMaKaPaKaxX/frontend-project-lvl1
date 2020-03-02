@@ -17,14 +17,14 @@ const isPrime = (numb) => {
 
 const generateDataForGame = () => {
   const randomNumber = generateRandomNumber(1, 100);
-  const question = `${randomNumber}`;
+  const question = randomNumber.toString();
   const rigthAnswer = isPrime(randomNumber) ? 'yes' : 'no';
   const result = [question, rigthAnswer];
   return result;
 };
 
-const startIsPrimeGame = () => {
+const startPrimeGame = () => {
   engine(generateDataForGame, gameDescription);
 };
 
-export default startIsPrimeGame;
+export default startPrimeGame;

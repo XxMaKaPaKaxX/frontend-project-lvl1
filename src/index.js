@@ -6,7 +6,7 @@ const askQuestion = (question) => {
   console.log(`Question: ${question}`);
 };
 
-const engine = (gameData, gameDescription) => {
+const engine = (generateDataForGame, gameDescription) => {
   console.log('Welcome to the Brain Games!');
 
   const playerName = readlineSync.question('May I have your name?: ');
@@ -15,7 +15,7 @@ const engine = (gameData, gameDescription) => {
   console.log(gameDescription);
 
   for (let roundsCount = 0; roundsCount < gameRoundsLimit; roundsCount += 1) {
-    const [question, rigthAnswer] = gameData();
+    const [question, rigthAnswer] = generateDataForGame();
 
     askQuestion(question);
 
