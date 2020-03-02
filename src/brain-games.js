@@ -5,7 +5,7 @@ import startEvenGame from './games/even';
 import startCalcGame from './games/calc';
 import startGcdGame from './games/gcd';
 import startPrimeGame from './games/prime';
-import startProgressionGame from './games/progresiion';
+import startProgressionGame from './games/progression';
 
 
 const chooseTheGame = () => {
