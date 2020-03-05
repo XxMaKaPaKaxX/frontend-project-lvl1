@@ -29,7 +29,7 @@ const calculate = (firstNumber, operator, secondNumber) => {
   return result;
 };
 
-const generateDataForGame = () => {
+const generateGameData = () => {
   const randomNumber1 = generateRandomNumber(1, 100);
   const randomNumber2 = generateRandomNumber(1, 100);
   const randomOperator = getRandomOperator();
@@ -40,7 +40,7 @@ const generateDataForGame = () => {
 };
 
 const startCalcGame = () => {
-  engine(generateDataForGame, gameDescription);
+  engine(generateGameData, gameDescription);
 };
 
 export default startCalcGame;

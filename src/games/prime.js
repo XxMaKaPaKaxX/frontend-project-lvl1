@@ -15,7 +15,7 @@ const isPrime = (numb) => {
   return true;
 };
 
-const generateDataForGame = () => {
+const generateGameData = () => {
   const randomNumber = generateRandomNumber(1, 100);
   const question = randomNumber.toString();
   const rigthAnswer = isPrime(randomNumber) ? 'yes' : 'no';
@@ -24,7 +24,7 @@ const generateDataForGame = () => {
 };
 
 const startPrimeGame = () => {
-  engine(generateDataForGame, gameDescription);
+  engine(generateGameData, gameDescription);
 };
 
 export default startPrimeGame;

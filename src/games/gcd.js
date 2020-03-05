@@ -10,7 +10,7 @@ const getGCD = (x, y) => {
   return getGCD(y, x % y);
 };
 
-const generateDataForGame = () => {
+const generateGameData = () => {
   const firstRandomNumber = generateRandomNumber(1, 100);
   const secondRandomNumber = generateRandomNumber(1, 100);
 
@@ -21,7 +21,7 @@ const generateDataForGame = () => {
 };
 
 const startGcdGame = () => {
-  engine(generateDataForGame, gameDescription);
+  engine(generateGameData, gameDescription);
 };
 
 export default startGcdGame;

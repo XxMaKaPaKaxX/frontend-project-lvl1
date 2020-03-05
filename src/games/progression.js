@@ -4,16 +4,16 @@ import engine from '../index';
 const progressionLength = 10;
 const gameDescription = 'What number is missing in the progression?';
 
-const getRandomIndexOfProgression = (arr) => generateRandomNumber(0, arr.length - 1);
+const getRandomIndexOfArray = (arr) => generateRandomNumber(0, arr.length - 1);
 
-const generateDataForGame = () => {
+const generateGameData = () => {
   const progression = [];
   const progressionDiff = generateRandomNumber(1, 10);
-  for (let indexNewElement = 0; indexNewElement < progressionLength - 1; indexNewElement += 1) {
-    const newElement = (indexNewElement + 1) * progressionDiff;
+  for (let i = 0; i < progressionLength - 1; i += 1) {
+    const newElement = (i + 1) * progressionDiff;
     progression.push(newElement);
   }
-  const randomIndex = getRandomIndexOfProgression(progression);
+  const randomIndex = getRandomIndexOfArray(progression);
   const rigthAnswer = String(progression[randomIndex]);
   progression[randomIndex] = '..';
   const question = progression.join(' ');
@@ -22,6 +22,6 @@ const generateDataForGame = () => {
 };
 
 const startProgressionGame = () => {
-  engine(generateDataForGame, gameDescription);
+  engine(generateGameData, gameDescription);
 };
 export default startProgressionGame;

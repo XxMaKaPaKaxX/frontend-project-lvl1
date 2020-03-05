@@ -5,7 +5,7 @@ const gameDescription = 'Answer "yes" if the number is even, otherwise answer "n
 
 const isEven = (num) => ((num % 2) === 0);
 
-const generateDataForGame = () => {
+const generateGameData = () => {
   const question = generateRandomNumber(1, 100);
   const rigthAnswer = isEven(question) ? 'yes' : 'no';
   const result = [question, rigthAnswer];
@@ -13,7 +13,7 @@ const generateDataForGame = () => {
 };
 
 const startEvenGame = () => {
-  engine(generateDataForGame, gameDescription);
+  engine(generateGameData, gameDescription);
 };
 
 export default startEvenGame;
